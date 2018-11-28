@@ -94,7 +94,7 @@ window.onload = function() {
 	}
 }
 
-//
+//渲染数据
 function render(parent, child, className, index) {
 	var firstList = document.querySelector('.firstList');
 	var html1 = '';
@@ -138,50 +138,6 @@ function render(parent, child, className, index) {
 		} else {
 			html2 += '<div class="listItem"><span>num值为：</span>' + child + '</div>';
 		}
-	}
-	secondList.innerHTML = html2;
-}
-
-//渲染数据
-function render1(parent, index) {
-	var firstList = document.querySelector('.firstList');
-	var html1 = '';
-	for(var i = 0; i < parent.length; i++) {
-		if(list == 'firstList' && i == index) {
-			html1 += '<div class="listItem focus">' + parent[i].name + '</div>';
-		} else {
-			html1 += '<div class="listItem">' + parent[i].name + '</div>';
-		}
-	}
-	firstList.innerHTML = html1;
-	var secondList = document.querySelector('.secondList');
-	var html2 = '';
-	if(parent[index].valType == 'list') {
-
-	}
-	for(var j = 0; j < child.length; j++) {
-		if(list == 'secondList' && j == index) {
-			if(parent[index].valType == 'list') {
-				html2 += '<div class="listItem focus">' + child[j].name + '<span class="list">>></span></div>';
-			} else if(parent[index].valType == 'sel') {
-				html2 += '<div class="listItem focus"><span>请选择：</span>' + child[j] + '</div>';
-			} else if(parent[index].valType == 'num') {
-				html2 += '<div class="listItem focus"><span>num值为：</span>' + child[j] + '</div>';
-			} else {
-				html2 += '<div class="listItem focus"><span>str值为：</span>' + child[j] + '</div>';
-			}
-		} else {
-			if(parent[index].valType == 'list') {
-				html2 += '<div class="listItem">' + child[j].name + '<span class="list">>></span></div>';
-			} else if(parent[index].valType == 'sel') {
-				html2 += '<div class="listItem"><span>请选择：</span>' + child[j] + '</div>';
-			} else if(parent[index].valType == 'num') {
-				html2 += '<div class="listItem"><span>num值为：</span>' + child[j] + '</div>';
-			} else {
-				html2 += '<div class="listItem"><span>str值为：</span>' + child[j] + '</div>';
-			}
-		}
-
 	}
 	secondList.innerHTML = html2;
 }
