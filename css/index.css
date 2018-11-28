@@ -1,0 +1,30 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+pre,form,fieldset,input,textarea,p,blockquote,th,td{
+	margin: 0;
+	padding: 0;
+}
+
+#container{
+	margin-top: 50px;
+	margin-left: 200px;
+}
+.firstList, .secondList {
+	float: left;
+}
+.listItem {
+	margin-top: 20px;
+	padding: 0 20px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+	border: 1px solid transparent;
+}
+.listItem.focus{
+	color: red;
+	border-color: #FF0000;
+}
+.listItem .list{
+	margin-left: 30px;
+}
