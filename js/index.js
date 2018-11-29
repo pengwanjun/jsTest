@@ -107,58 +107,6 @@ window.onload = function() {
 
 }
 
-//返回列表中第一个可以操作的下标-----上键
-function canOpera4(parent, index) {
-	var thisIndex;
-	for(var i = index; i >= 0; i--) {
-		if(parent[i].opera) {
-			thisIndex = i;
-			break;
-		}
-	}
-	if(typeof(thisIndex) == 'undefined') {
-		return canOpera3(parent);
-	} else {
-		return thisIndex;
-	}
-}
-
-//返回列表中第一个可以操作的下标-----上键
-function canOpera3(parent) {
-	for(var i = parent.length - 1; i > 0; i--) {
-		if(parent[i].opera) {
-			return i;
-			break;
-		}
-	}
-}
-
-//返回列表中第一个可以操作的下标-----下键
-function canOpera2(parent, index) {
-	var thisIndex;
-	for(var i = index; i < parent.length; i++) {
-		if(parent[i].opera) {
-			thisIndex = i;
-			break;
-		}
-	}
-	if(typeof(thisIndex) == 'undefined') {
-		return canOpera1(parent);
-	} else {
-		return thisIndex;
-	}
-}
-
-//返回列表中第一个可以操作的下标-----下键
-function canOpera1(parent) {
-	for(var i = 0; i < parent.length; i++) {
-		if(parent[i].opera) {
-			return i;
-			break;
-		}
-	}
-}
-
 //渲染数据
 function render(parent, child, className, index) {
 	var firstList = document.querySelector('.firstList');
@@ -213,6 +161,58 @@ function render(parent, child, className, index) {
 		}
 	}
 	secondList.innerHTML = html2;
+}
+
+//返回列表中第一个可以操作的下标-----上键
+function canOpera4(parent, index) {
+	var thisIndex;
+	for(var i = index; i >= 0; i--) {
+		if(parent[i].opera) {
+			thisIndex = i;
+			break;
+		}
+	}
+	if(typeof(thisIndex) == 'undefined') {
+		return canOpera3(parent);
+	} else {
+		return thisIndex;
+	}
+}
+
+//返回列表中第一个可以操作的下标-----上键
+function canOpera3(parent) {
+	for(var i = parent.length - 1; i > 0; i--) {
+		if(parent[i].opera) {
+			return i;
+			break;
+		}
+	}
+}
+
+//返回列表中第一个可以操作的下标-----下键
+function canOpera2(parent, index) {
+	var thisIndex;
+	for(var i = index; i < parent.length; i++) {
+		if(parent[i].opera) {
+			thisIndex = i;
+			break;
+		}
+	}
+	if(typeof(thisIndex) == 'undefined') {
+		return canOpera1(parent);
+	} else {
+		return thisIndex;
+	}
+}
+
+//返回列表中第一个可以操作的下标-----下键
+function canOpera1(parent) {
+	for(var i = 0; i < parent.length; i++) {
+		if(parent[i].opera) {
+			return i;
+			break;
+		}
+	}
 }
 
 //判断dom元素是否有某个class值
