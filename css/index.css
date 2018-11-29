@@ -11,17 +11,21 @@ div{
 #container{
 	margin-top: 50px;
 	margin-left: 200px;
+	overflow: hidden;
 }
 .firstList, .secondList {
 	float: left;
+	position: relative;
+}
+.firstList{
+	top: 0px;
 }
 .listItem {
-	margin-top: 20px;
 	padding: 0 20px;
 	cursor: pointer;
 	text-align: center;
-	line-height: 30px;
-	height: 30px;
+	line-height: 40px;
+	height: 40px;
 	border: 1px solid transparent;
 }
 .listItem.focus{

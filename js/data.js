@@ -120,7 +120,7 @@ var advancedVideo = [{
 ];
 var video = [{
 		name: 'Picture Mode',
-		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright'],
+		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright','test1','test2','test3','test4'],
 		curVal: 'User',
 		valType: 'sel',
 		opera: true
@@ -198,7 +198,7 @@ var video = [{
 		name: 'Advanced Video',
 		value: advancedVideo,
 		valType: 'list',
-		opera: false
+		opera: true
 	}
 ];
 
@@ -385,24 +385,24 @@ var Menu = [
 		name: 'Audio',
 		value: audio,
 		valType: 'list',
-		opera: true
+		opera: false
 	},
 	{
 		name:'TV',
 		value: tv,
 		valType: 'list',
-		opera: true
+		opera: false
 	},
 	{
 		name:'Setup',
 		value: setup,
 		valType: 'list',
-		opera: true
+		opera: false
 	},
 	{
 		name:'Parental',
 		value:parental,
 		valType: 'list',
-		opera: true
+		opera: false
 	}
 ];

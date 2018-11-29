@@ -5,6 +5,10 @@ window.onload = function() {
 	var child = Menu[0].value;
 	render(parent, child, 'firstList', 0);
 
+	var stage = 7;
+	var itemHeight = document.querySelector(".listItem.focus").offsetHeight;
+	document.querySelector('#container').style.height = Number(itemHeight) * stage + 'px';
+
 	var navList = [];
 
 	document.onkeyup = function(e) {
@@ -17,20 +21,31 @@ window.onload = function() {
 			if(curIndex == parentList.length - 1) {
 				if(className == 'firstList') {
 					var oIndex = canOpera1(parent);
+					document.querySelector(".firstList").style.top = '0px';
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
+					if(Object.prototype.toString.call(child) == '[object Array]') {					
+						var floorIndex = Math.floor(0 / stage);
+						document.querySelector(".secondList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
+					}
 					removeClass(parentList[parentList.length - 1], 'focus');
 					addClass(parentList[0], 'focus');
 				}
 			} else {
 				if(className == 'firstList') {
 					var oIndex = canOpera2(parent, curIndex + 1);
+					var floorIndex = Math.floor(oIndex / stage);
+					document.querySelector(".firstList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
-				} else {
+				}else {
+					if(Object.prototype.toString.call(child) == '[object Array]') {					
+						var floorIndex = Math.floor((curIndex+1) / stage);
+						document.querySelector(".secondList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
+					}
 					removeClass(parentList[curIndex], 'focus');
-					addClass(parentList[curIndex+1], 'focus');
+					addClass(parentList[curIndex + 1], 'focus');
 				}
 			}
 		}
@@ -39,20 +54,32 @@ window.onload = function() {
 			if(curIndex == 0) {
 				if(className == 'firstList') {
 					var oIndex = canOpera3(parent);
+					var floorIndex = Math.floor(oIndex / stage);
+					document.querySelector(".firstList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
+					if(Object.prototype.toString.call(child) == '[object Array]') {					
+						var floorIndex = Math.floor((parentList.length-1) / stage);
+						document.querySelector(".secondList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
+					}
 					removeClass(parentList[0], 'focus');
-					addClass(parentList[parentList.length-1], 'focus');
+					addClass(parentList[parentList.length - 1], 'focus');
 				}
 			} else {
 				if(className == 'firstList') {
 					var oIndex = canOpera4(parent, curIndex - 1);
+					var floorIndex = Math.floor(oIndex / stage);
+					document.querySelector(".firstList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
+					if(Object.prototype.toString.call(child) == '[object Array]') {					
+						var floorIndex = Math.floor((curIndex-1) / stage);
+						document.querySelector(".secondList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
+					}
 					removeClass(parentList[curIndex], 'focus');
-					addClass(parentList[curIndex-1], 'focus');
+					addClass(parentList[curIndex - 1], 'focus');
 				}
 			}
 		}
@@ -67,6 +94,7 @@ window.onload = function() {
 				if(parent[curIndex].valType == 'list') {
 					parent = child;
 					var oIndex = canOpera1(parent);
+					document.querySelector(".firstList").style.top = '0px';
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else if(parent[curIndex].valType == 'sel') {
@@ -80,11 +108,13 @@ window.onload = function() {
 					removeClass(parentList[curIndex], 'focus');
 					addClass(nextList[oIndex], 'focus');
 				} else {
-					className = 'secondList';
-					render(parent, child, className, curIndex);
+					var nextList = curItem.parentElement.nextElementSibling.children;
+					removeClass(parentList[curIndex], 'focus');
+					addClass(nextList[0], 'focus');
 				}
-			} else {
-				//第二列---没有下一级列表，根据valType判断是加减数字还是选择列表项
+			} else if(typeof child == 'number') {
+				//第二列---右键---数值增大
+				console.log('增加');
 			}
 		}
 		//左键
@@ -93,14 +123,21 @@ window.onload = function() {
 				if(navList.length != 0) {
 					parent = navList[navList.length - 1].arr;
 					child = parent[navList[navList.length - 1].mark].value;
+					var floorIndex = Math.floor(navList[navList.length - 1].mark / stage);
+					document.querySelector(".firstList").style.top = -(floorIndex * stage * Number(itemHeight)) + 'px';
 					render(parent, child, className, navList[navList.length - 1].mark);
 					navList.pop();
 				}
 			} else {
-				className = 'firstList';
-				parent = navList[navList.length - 1].arr;
-				render(parent, child, className, navList[navList.length - 1].mark);
-				navList.pop();
+				if(typeof child == 'number') {
+					//第二列---左键---数值减小
+					console.log('减小');
+				} else {
+					className = 'firstList';
+					parent = navList[navList.length - 1].arr;
+					render(parent, child, className, navList[navList.length - 1].mark);
+					navList.pop();
+				}
 			}
 		}
 	}
@@ -181,7 +218,7 @@ function canOpera4(parent, index) {
 
 //返回列表中第一个可以操作的下标-----上键
 function canOpera3(parent) {
-	for(var i = parent.length - 1; i > 0; i--) {
+	for(var i = parent.length - 1; i >= 0; i--) {
 		if(parent[i].opera) {
 			return i;
 			break;
