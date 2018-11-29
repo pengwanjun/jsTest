@@ -4,6 +4,9 @@ pre,form,fieldset,input,textarea,p,blockquote,th,td{
 	margin: 0;
 	padding: 0;
 }
+div{
+	outline: none;
+}
 
 #container{
 	margin-top: 50px;
@@ -27,4 +30,7 @@ pre,form,fieldset,input,textarea,p,blockquote,th,td{
 }
 .listItem .list{
 	margin-left: 30px;
+}
+.listItem.disabled{
+	color: #CDC9C9;
 }

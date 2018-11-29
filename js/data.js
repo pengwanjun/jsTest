@@ -4,18 +4,21 @@ var mjc = [{
 		name: 'Effect',
 		value: ['Middle', 'High', 'Off', 'Low'],
 		curVal: 'Middle',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'Demo Partition',
 		value: ['All', 'Right', 'Left'],
 		curVal: 'All',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Demo',
 		value: 'MJC Demo',
-		valType: 'str'
+		valType: 'str',
+		opera: false
 	}
 ];
 
@@ -23,153 +26,179 @@ var colorTemperature = [{
 		name: 'Color Temperature',
 		value: ['User', 'Cool', 'Standard', 'Warm'],
 		curVal: 'User',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'R Gain',
 		value: 0,
-		valType: 'num'
+		valType: 'num',
+		opera: true
 	},
 	{
 		name: 'G Gain',
 		value: 0,
-		valType: 'num'
+		valType: 'num',
+		opera: false
 	},
 	{
 		name: 'B Gain',
 		value: 0,
-		valType: 'num'
+		valType: 'num',
+		opera: false
 	}
 ];
 var advancedVideo = [{
 		name: 'DNR',
 		value: ['Medium', 'strong', 'Auto', 'Off', 'Low'],
 		curVal: 'Medium',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'MPEG NR',
 		value: ['Medium', 'strong', 'Off', 'Low'],
 		curVal: 'Medium',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'Adaptive Luma Control',
 		value: ['Medium', 'strong', 'Off', 'Low'],
 		curVal: 'Medium',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'Flesh Tone',
 		value: ['Medium', 'High', 'Off', 'Low'],
 		curVal: 'Medium',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'Dl Film Mode',
 		value: ['Auto', 'Off'],
 		curVal: 'Auto',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Blue stretch',
 		value: ['Off', 'On'],
 		curVal: 'Off',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Game Mode',
 		value: ['Off', 'On'],
 		curVal: 'Off',
-		canOpera: false,
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'MJC',
 		value: mjc,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	},
 	{
 		name: 'Black Bar Detection',
 		value: ['Off', 'On'],
 		curVal: 'Off',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Super Resolution',
 		value: ['On', 'Off'],
 		curVal: 'On',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	}
 ];
 var video = [{
 		name: 'Picture Mode',
 		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright'],
 		curVal: 'User',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Back Light',
 		value: 50,
-		valType: 'num'
+		valType: 'num',
+		opera: true
 	},
 	{
 		name: 'Brightness',
 		value: 50,
-		valType: 'num'
+		valType: 'num',
+		opera: false
 	},
 	{
 		name: 'Contrast',
 		value: 80,
-		valType: 'num'
+		valType: 'num',
+		opera: false
 	},
 	{
 		name: 'Saturation',
 		value: 60,
-		valType: 'num'
+		valType: 'num',
+		opera: true
 	},
 	{
 		name: 'HUE',
 		value: 0,
-		valType: 'num'
+		valType: 'num',
+		opera: true
 	},
 	{
 		name: 'Sharpness',
 		value: 12,
-		valType: 'num'
+		valType: 'num',
+		opera: false
 	},
 	{
 		name: 'Blue Light',
 		value: 0,
-		valType: 'num'
+		valType: 'num',
+		opera: true
 	},
 	{
 		name: 'Dolby Vision Notification',
 		value: ['Off', 'On'],
 		curVal: 'Off',
-		valType: 'sel'
+		valType: 'sel',
+		opera: false
 	},
 	{
 		name: 'Gamma',
 		value: ['Middle', 'Bright', 'Dark'],
 		curVal: 'Middle',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'HDR',
 		value: ['Auto', 'Off'],
 		curVal: 'Auto',
-		valType: 'sel'
+		valType: 'sel',
+		opera: true
 	},
 	{
 		name: 'Color Temperature',
 		value: colorTemperature,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	},
 	{
 		name: 'Advanced Video',
 		value: advancedVideo,
-		valType: 'list'
+		valType: 'list',
+		opera: false
 	}
 ];
 
@@ -349,26 +378,31 @@ var Menu = [
 	{
 		name: 'Video',
 		value: video,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	}, 
 	{
 		name: 'Audio',
 		value: audio,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	},
 	{
 		name:'TV',
 		value: tv,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	},
 	{
 		name:'Setup',
 		value: setup,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	},
 	{
 		name:'Parental',
 		value:parental,
-		valType: 'list'
+		valType: 'list',
+		opera: true
 	}
 ];
