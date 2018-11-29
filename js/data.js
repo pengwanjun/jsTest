@@ -123,7 +123,7 @@ var video = [{
 		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright'],
 		curVal: 'User',
 		valType: 'sel',
-		opera: false
+		opera: true
 	},
 	{
 		name: 'Back Light',

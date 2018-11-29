@@ -15,44 +15,44 @@ window.onload = function() {
 		//下键
 		if(e.keyCode == 40) {
 			if(curIndex == parentList.length - 1) {
-				var oIndex = canOpera1(parent);
 				if(className == 'firstList') {
+					var oIndex = canOpera1(parent);
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
 					removeClass(parentList[parentList.length - 1], 'focus');
-					addClass(parentList[oIndex], 'focus');
+					addClass(parentList[0], 'focus');
 				}
 			} else {
-				var oIndex = canOpera2(parent, curIndex + 1);
 				if(className == 'firstList') {
+					var oIndex = canOpera2(parent, curIndex + 1);
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
 					removeClass(parentList[curIndex], 'focus');
-					addClass(parentList[oIndex], 'focus');
+					addClass(parentList[curIndex+1], 'focus');
 				}
 			}
 		}
 		//上键
 		if(e.keyCode == 38) {
 			if(curIndex == 0) {
-				var oIndex = canOpera3(parent);
 				if(className == 'firstList') {
+					var oIndex = canOpera3(parent);
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
 					removeClass(parentList[0], 'focus');
-					addClass(parentList[oIndex], 'focus');
+					addClass(parentList[parentList.length-1], 'focus');
 				}
 			} else {
-				var oIndex = canOpera4(parent, curIndex - 1);
 				if(className == 'firstList') {
+					var oIndex = canOpera4(parent, curIndex - 1);
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else {
 					removeClass(parentList[curIndex], 'focus');
-					addClass(parentList[oIndex], 'focus');
+					addClass(parentList[curIndex-1], 'focus');
 				}
 			}
 		}
@@ -70,8 +70,15 @@ window.onload = function() {
 					child = parent[oIndex].value;
 					render(parent, child, className, oIndex);
 				} else if(parent[curIndex].valType == 'sel') {
-					className = 'secondList';
-					render(parent, child, className, 0);
+					for(var i = 0; i < child.length; i++) {
+						if(parent[curIndex].curVal == child[i]) {
+							oIndex = i;
+							break;
+						}
+					}
+					var nextList = curItem.parentElement.nextElementSibling.children;
+					removeClass(parentList[curIndex], 'focus');
+					addClass(nextList[oIndex], 'focus');
 				} else {
 					className = 'secondList';
 					render(parent, child, className, curIndex);
@@ -100,7 +107,7 @@ window.onload = function() {
 
 }
 
-//返回列表中第一个可以操作的下标
+//返回列表中第一个可以操作的下标-----上键
 function canOpera4(parent, index) {
 	var thisIndex;
 	for(var i = index; i >= 0; i--) {
@@ -116,7 +123,7 @@ function canOpera4(parent, index) {
 	}
 }
 
-//返回列表中第一个可以操作的下标
+//返回列表中第一个可以操作的下标-----上键
 function canOpera3(parent) {
 	for(var i = parent.length - 1; i > 0; i--) {
 		if(parent[i].opera) {
@@ -126,7 +133,7 @@ function canOpera3(parent) {
 	}
 }
 
-//返回列表中第一个可以操作的下标
+//返回列表中第一个可以操作的下标-----下键
 function canOpera2(parent, index) {
 	var thisIndex;
 	for(var i = index; i < parent.length; i++) {
@@ -142,7 +149,7 @@ function canOpera2(parent, index) {
 	}
 }
 
-//返回列表中第一个可以操作的下标
+//返回列表中第一个可以操作的下标-----下键
 function canOpera1(parent) {
 	for(var i = 0; i < parent.length; i++) {
 		if(parent[i].opera) {
@@ -187,13 +194,9 @@ function render(parent, child, className, index) {
 	} else if(type == 'sel') {
 		for(var j = 0; j < child.length; j++) {
 			if(className == 'secondList' && j == index) {
-				html2 += '<div class="listItem focus"><span>请选择：</span>' + child[j].curVal + '</div>';
+				html2 += '<div class="listItem focus"><span>请选择：</span>' + child[j] + '</div>';
 			} else {
-				if(child[j].opera) {
-					html2 += '<div class="listItem"><span>请选择：</span>' + child[j].curVal + '</div>';
-				} else {
-					html2 += '<div class="listItem disabled"><span>请选择：</span>' + child[j].curVal + '</div>';
-				}
+				html2 += '<div class="listItem"><span>请选择：</span>' + child[j] + '</div>';
 			}
 		}
 	} else if(type == 'str') {
