@@ -10,15 +10,18 @@ div{
 
 #container{
 	margin-top: 50px;
-	margin-left: 200px;
+	background: #fff;
 	overflow: hidden;
-}
-.firstList, .secondList {
-	float: left;
 	position: relative;
 }
-.firstList{
+.firstList, .secondList {
+	width: 300px;
+	position: absolute;
 	top: 0px;
+	left: 0;
+}
+.secondList {
+	left: 300px;
 }
 .listItem {
 	padding: 0 20px;
