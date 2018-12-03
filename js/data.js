@@ -1,6 +1,6 @@
 
 //video下所有数据
-var mjc = [{
+var gMenuVideoMjc = [{
 		name: 'Effect',
 		value: ['Middle', 'High', 'Off', 'Low'],
 		curVal: 'Middle',
@@ -22,12 +22,18 @@ var mjc = [{
 	}
 ];
 
-var colorTemperature = [{
+var gMenuVideoCt = [{
 		name: 'Color Temperature',
 		value: ['User', 'Cool', 'Standard', 'Warm'],
 		curVal: 'User',
 		valType: 'sel',
-		opera: false
+		opera: false,
+		callback(){
+			
+		},
+		params(){
+			
+		}
 	},
 	{
 		name: 'R Gain',
@@ -48,7 +54,7 @@ var colorTemperature = [{
 		opera: false
 	}
 ];
-var advancedVideo = [{
+var gMenuVideoAv = [{
 		name: 'DNR',
 		value: ['Medium', 'strong', 'Auto', 'Off', 'Low'],
 		curVal: 'Medium',
@@ -99,7 +105,7 @@ var advancedVideo = [{
 	},
 	{
 		name: 'MJC',
-		value: mjc,
+		value: gMenuVideoMjc,
 		valType: 'list',
 		opera: true
 	},
@@ -118,9 +124,9 @@ var advancedVideo = [{
 		opera: true
 	}
 ];
-var video = [{
+var gMenuVideo = [{
 		name: 'Picture Mode',
-		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright','test1','test2','test3','test4'],
+		value: ['User', 'Cinema', 'Sport', 'Vivid', 'Hi-Bright'],
 		curVal: 'User',
 		valType: 'sel',
 		opera: true
@@ -135,13 +141,13 @@ var video = [{
 		name: 'Brightness',
 		value: 50,
 		valType: 'num',
-		opera: false
+		opera: true
 	},
 	{
 		name: 'Contrast',
 		value: 80,
 		valType: 'num',
-		opera: false
+		opera: true
 	},
 	{
 		name: 'Saturation',
@@ -159,7 +165,7 @@ var video = [{
 		name: 'Sharpness',
 		value: 12,
 		valType: 'num',
-		opera: false
+		opera: true
 	},
 	{
 		name: 'Blue Light',
@@ -172,7 +178,7 @@ var video = [{
 		value: ['Off', 'On'],
 		curVal: 'Off',
 		valType: 'sel',
-		opera: false
+		opera: true
 	},
 	{
 		name: 'Gamma',
@@ -190,13 +196,13 @@ var video = [{
 	},
 	{
 		name: 'Color Temperature',
-		value: colorTemperature,
+		value: gMenuVideoCt,
 		valType: 'list',
 		opera: true
 	},
 	{
 		name: 'Advanced Video',
-		value: advancedVideo,
+		value: gMenuVideoAv,
 		valType: 'list',
 		opera: true
 	}
@@ -204,7 +210,7 @@ var video = [{
 
 //audio下所有数据
 
-var dolbyAudioProcessing=[
+var gMenuAudioDol=[
 	{
 		name:'Dolby Audio Processing',
 		value:['On','Off'],
@@ -237,15 +243,15 @@ var dolbyAudioProcessing=[
 	}
 ];
 
-var Advanced=[
+var gMenuAudioAdvanced=[
 	{
 		name:'Dolby Audio Processing',
-		value:dolbyAudioProcessing,
+		value:gMenuAudioDol,
 		valType: 'str'
 	}
 ];
 
-var audio=[
+var gMenuAudio=[
 	{
 		name:'Speaker',
 		value:['On','Off'],
@@ -261,7 +267,7 @@ var audio=[
 	{
 		name:'SPDIF Delay',
 		value:140,
-		valType: 'num'
+		valType: 'num'		
 	},
 	{
 		name:'Type',
@@ -285,7 +291,7 @@ var audio=[
 	},
 	{
 		name:'Advanced',
-		value:Advanced,
+		value:gMenuAudioAdvanced,
 		valType: 'list'
 	}
 ];
@@ -293,7 +299,7 @@ var audio=[
 
 //tv下所有数据（数据未完成）
 
-var Channels=[
+var gMenuTvChannels=[
 	{
 		name:'Channel Scan',
 		value:[]
@@ -332,7 +338,7 @@ var Channels=[
 	}
 ];
 
-var tv=[
+var gMenuTv=[
 	{
 		name:'Tuner Mode',
 		value:['Antenna','Cable','Satellite'],
@@ -347,14 +353,14 @@ var tv=[
 	},
 	{
 		name:'Channels',
-		value:Channels,
+		value: gMenuTvChannels,
 		valType: 'list'
 	}
 ];
 
 
 //setup下所有数据（数据未完成）
-var setup=[
+var gMenuSetup=[
 	{
 		name:'OSD Language',
 		value:['English','Vasco','Catalan','Hrvatski'],
@@ -364,7 +370,7 @@ var setup=[
 
 
 //parental下所有数据
-var parental=[
+var gMenuParental=[
 	{
 		name:'Password',
 		value:'password',
@@ -377,32 +383,32 @@ var parental=[
 var Menu = [
 	{
 		name: 'Video',
-		value: video,
+		value: gMenuVideo,
 		valType: 'list',
 		opera: true
 	}, 
 	{
 		name: 'Audio',
-		value: audio,
+		value: gMenuAudio,
 		valType: 'list',
-		opera: false
+		opera: true
 	},
 	{
 		name:'TV',
-		value: tv,
+		value: gMenuTv,
 		valType: 'list',
-		opera: false
+		opera: true
 	},
 	{
 		name:'Setup',
-		value: setup,
+		value: gMenuSetup,
 		valType: 'list',
-		opera: false
+		opera: true
 	},
 	{
 		name:'Parental',
-		value:parental,
+		value: gMenuParental,
 		valType: 'list',
-		opera: false
+		opera: true
 	}
 ];
